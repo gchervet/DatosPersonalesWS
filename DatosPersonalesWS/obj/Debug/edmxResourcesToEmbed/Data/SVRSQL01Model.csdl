@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dev_UniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dev_Uni_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="uniAlumnosDatosPersonales" EntityType="dev_UniModel.uniAlumnosDatosPersonale" />
+    <FunctionImport Name="sp_uni_get_datos_alumno_username" ReturnType="Collection(dev_UniModel.sp_uni_get_datos_alumno_username_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="uniAlumnos" EntityType="dev_UniModel.uniAlumno" />
+    <FunctionImport Name="sp_uni_get_alumno_carrera_idEntidad" ReturnType="Collection(dev_UniModel.sp_uni_get_alumno_carrera_idEntidad_Result)">
+      <Parameter Name="idEntidad" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_uni_update_datos_alumno_username" ReturnType="Collection(dev_UniModel.sp_uni_update_datos_alumno_username_Result)">
+      <Parameter Name="idEntidad" Mode="In" Type="Int32" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="telFijoArea" Mode="In" Type="String" />
+      <Parameter Name="telFijoNumero" Mode="In" Type="String" />
+      <Parameter Name="telMovilArea" Mode="In" Type="String" />
+      <Parameter Name="telMovilNumero" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="uniAlumnosDatosPersonale">
+    <Key>
+      <PropertyRef Name="IdEntidad" />
+    </Key>
+    <Property Name="IdEntidad" Type="Int32" Nullable="false" />
+    <Property Name="TipoDocumento" Type="Int32" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoCivil" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Trabaja" Type="Boolean" />
+    <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TelFijoCodPais" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TelFijoCodArea" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TelFijoNumero" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TelMovilCodPais" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TelMovilCodArea" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TelMovilNumero" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DirCalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DirNumero" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="DirPiso" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="DirDepto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="DirCodigoPostal" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="DirCodLocalidad" Type="Int32" />
+    <Property Name="DirCodProvincia" Type="Int32" />
+    <Property Name="DirCodPais" Type="Int32" />
+    <Property Name="UltimaActualizacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="uniAlumno">
+    <Key>
+      <PropertyRef Name="legprovi" />
+    </Key>
+    <Property Name="legprovi" Type="Int32" Nullable="false" />
+    <Property Name="legdef" Type="Int32" />
+    <Property Name="apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecnac" Type="DateTime" Precision="3" />
+    <Property Name="lugar" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="docnac" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="cedide" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="libciv" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="libenr" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="argext" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="nacion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="nropas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tramite" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="carrera" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="regional" Type="Int32" />
+    <Property Name="turno" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="finscrip" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="regional_cursa" Type="Int32" />
+    <Property Name="version2" Type="Int32" />
+    <Property Name="documentoExtranjero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaisDocumento" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Origen" Type="Int32" />
+    <Property Name="IdEntidad" Type="Int32" />
+    <Property Name="CicloIngreso" Type="Int32" />
+    <Property Name="CuatriIngreso" Type="Int32" />
+    <Property Name="Modalidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IdCanal" Type="Int32" />
+    <Property Name="CanalDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_uni_get_datos_alumno_username_Result">
+    <Property Type="Int32" Name="legprovi" Nullable="false" />
+    <Property Type="Int32" Name="legdef" Nullable="true" />
+    <Property Type="String" Name="apellido" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="fecnac" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IdEntidad" Nullable="true" />
+    <Property Type="String" Name="TelFijoCodArea" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelFijoCodPais" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelFijoNumero" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="TelMovilCodArea" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelMovilCodPais" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelMovilNumero" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="EMail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NumeroDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_uni_get_alumno_carrera_idEntidad_Result">
+    <Property Type="String" Name="Plan" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="Modalidad" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Carrera" Nullable="true" MaxLength="2" />
+    <Property Type="Boolean" Name="Canvas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_uni_update_datos_alumno_username_Result">
+    <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>

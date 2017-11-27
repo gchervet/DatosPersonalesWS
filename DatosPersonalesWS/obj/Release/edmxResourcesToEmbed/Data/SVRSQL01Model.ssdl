@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dev_UniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="uniAlumnos">
+    <Key>
+      <PropertyRef Name="legprovi" />
+    </Key>
+    <Property Name="legprovi" Type="int" Nullable="false" />
+    <Property Name="legdef" Type="int" />
+    <Property Name="apellido" Type="varchar" MaxLength="30" />
+    <Property Name="nombre" Type="varchar" MaxLength="30" />
+    <Property Name="fecnac" Type="datetime" />
+    <Property Name="lugar" Type="varchar" MaxLength="25" />
+    <Property Name="docnac" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="cedide" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="libciv" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="libenr" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="sexo" Type="varchar" MaxLength="1" />
+    <Property Name="argext" Type="varchar" MaxLength="1" />
+    <Property Name="nacion" Type="varchar" MaxLength="25" />
+    <Property Name="nropas" Type="varchar" MaxLength="50" />
+    <Property Name="tramite" Type="varchar" MaxLength="1" />
+    <Property Name="carrera" Type="varchar" MaxLength="4" />
+    <Property Name="regional" Type="int" />
+    <Property Name="turno" Type="varchar" MaxLength="1" />
+    <Property Name="finscrip" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="70" />
+    <Property Name="username" Type="varchar" MaxLength="70" />
+    <Property Name="regional_cursa" Type="int" />
+    <Property Name="version2" Type="int" />
+    <Property Name="documentoExtranjero" Type="varchar" MaxLength="50" />
+    <Property Name="PaisDocumento" Type="varchar" MaxLength="150" />
+    <Property Name="Origen" Type="int" />
+    <Property Name="IdEntidad" Type="int" />
+    <Property Name="CicloIngreso" Type="int" />
+    <Property Name="CuatriIngreso" Type="int" />
+    <Property Name="Modalidad" Type="varchar" MaxLength="10" />
+    <Property Name="IdCanal" Type="int" />
+    <Property Name="CanalDescripcion" Type="varchar" MaxLength="100" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="uniAlumnosDatosPersonales">
+    <Key>
+      <PropertyRef Name="IdEntidad" />
+    </Key>
+    <Property Name="IdEntidad" Type="int" Nullable="false" />
+    <Property Name="TipoDocumento" Type="int" />
+    <Property Name="NumeroDocumento" Type="varchar" MaxLength="50" />
+    <Property Name="EstadoCivil" Type="char" MaxLength="1" />
+    <Property Name="Trabaja" Type="bit" />
+    <Property Name="EMail" Type="varchar" MaxLength="100" />
+    <Property Name="TelFijoCodPais" Type="varchar" MaxLength="5" />
+    <Property Name="TelFijoCodArea" Type="varchar" MaxLength="5" />
+    <Property Name="TelFijoNumero" Type="varchar" MaxLength="25" />
+    <Property Name="TelMovilCodPais" Type="varchar" MaxLength="5" />
+    <Property Name="TelMovilCodArea" Type="varchar" MaxLength="5" />
+    <Property Name="TelMovilNumero" Type="varchar" MaxLength="25" />
+    <Property Name="DirCalle" Type="varchar" MaxLength="100" />
+    <Property Name="DirNumero" Type="varchar" MaxLength="6" />
+    <Property Name="DirPiso" Type="varchar" MaxLength="3" />
+    <Property Name="DirDepto" Type="varchar" MaxLength="3" />
+    <Property Name="DirCodigoPostal" Type="varchar" MaxLength="8" />
+    <Property Name="DirCodLocalidad" Type="int" />
+    <Property Name="DirCodProvincia" Type="int" />
+    <Property Name="DirCodPais" Type="int" />
+    <Property Name="UltimaActualizacion" Type="datetime" />
+  </EntityType>
+  <Function Name="sp_uni_get_alumno_carrera_idEntidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntidad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_uni_get_datos_alumno_username" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_uni_update_datos_alumno_username" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntidad" Type="int" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+    <Parameter Name="telFijoArea" Type="varchar" Mode="In" />
+    <Parameter Name="telFijoNumero" Type="varchar" Mode="In" />
+    <Parameter Name="telMovilArea" Type="varchar" Mode="In" />
+    <Parameter Name="telMovilNumero" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="dev_UniModelStoreContainer">
+    <EntitySet Name="uniAlumnos" EntityType="Self.uniAlumnos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uniAlumnosDatosPersonales" EntityType="Self.uniAlumnosDatosPersonales" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

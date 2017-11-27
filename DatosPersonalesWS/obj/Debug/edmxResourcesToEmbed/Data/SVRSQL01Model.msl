@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dev_UniModelStoreContainer" CdmEntityContainer="dev_Uni_Entities">
+    <EntitySetMapping Name="uniAlumnosDatosPersonales">
+      <EntityTypeMapping TypeName="dev_UniModel.uniAlumnosDatosPersonale">
+        <MappingFragment StoreEntitySet="uniAlumnosDatosPersonales">
+          <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
+          <ScalarProperty Name="DirCodPais" ColumnName="DirCodPais" />
+          <ScalarProperty Name="DirCodProvincia" ColumnName="DirCodProvincia" />
+          <ScalarProperty Name="DirCodLocalidad" ColumnName="DirCodLocalidad" />
+          <ScalarProperty Name="DirCodigoPostal" ColumnName="DirCodigoPostal" />
+          <ScalarProperty Name="DirDepto" ColumnName="DirDepto" />
+          <ScalarProperty Name="DirPiso" ColumnName="DirPiso" />
+          <ScalarProperty Name="DirNumero" ColumnName="DirNumero" />
+          <ScalarProperty Name="DirCalle" ColumnName="DirCalle" />
+          <ScalarProperty Name="TelMovilNumero" ColumnName="TelMovilNumero" />
+          <ScalarProperty Name="TelMovilCodArea" ColumnName="TelMovilCodArea" />
+          <ScalarProperty Name="TelMovilCodPais" ColumnName="TelMovilCodPais" />
+          <ScalarProperty Name="TelFijoNumero" ColumnName="TelFijoNumero" />
+          <ScalarProperty Name="TelFijoCodArea" ColumnName="TelFijoCodArea" />
+          <ScalarProperty Name="TelFijoCodPais" ColumnName="TelFijoCodPais" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Trabaja" ColumnName="Trabaja" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="IdEntidad" ColumnName="IdEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_uni_get_datos_alumno_username" FunctionName="dev_UniModel.Store.sp_uni_get_datos_alumno_username">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_UniModel.sp_uni_get_datos_alumno_username_Result">
+          <ScalarProperty Name="legprovi" ColumnName="legprovi" />
+          <ScalarProperty Name="legdef" ColumnName="legdef" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecnac" ColumnName="fecnac" />
+          <ScalarProperty Name="IdEntidad" ColumnName="IdEntidad" />
+          <ScalarProperty Name="TelFijoCodArea" ColumnName="TelFijoCodArea" />
+          <ScalarProperty Name="TelFijoCodPais" ColumnName="TelFijoCodPais" />
+          <ScalarProperty Name="TelFijoNumero" ColumnName="TelFijoNumero" />
+          <ScalarProperty Name="TelMovilCodArea" ColumnName="TelMovilCodArea" />
+          <ScalarProperty Name="TelMovilCodPais" ColumnName="TelMovilCodPais" />
+          <ScalarProperty Name="TelMovilNumero" ColumnName="TelMovilNumero" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="uniAlumnos">
+      <EntityTypeMapping TypeName="dev_UniModel.uniAlumno">
+        <MappingFragment StoreEntitySet="uniAlumnos">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="CanalDescripcion" ColumnName="CanalDescripcion" />
+          <ScalarProperty Name="IdCanal" ColumnName="IdCanal" />
+          <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+          <ScalarProperty Name="CuatriIngreso" ColumnName="CuatriIngreso" />
+          <ScalarProperty Name="CicloIngreso" ColumnName="CicloIngreso" />
+          <ScalarProperty Name="IdEntidad" ColumnName="IdEntidad" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="PaisDocumento" ColumnName="PaisDocumento" />
+          <ScalarProperty Name="documentoExtranjero" ColumnName="documentoExtranjero" />
+          <ScalarProperty Name="version2" ColumnName="version2" />
+          <ScalarProperty Name="regional_cursa" ColumnName="regional_cursa" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="finscrip" ColumnName="finscrip" />
+          <ScalarProperty Name="turno" ColumnName="turno" />
+          <ScalarProperty Name="regional" ColumnName="regional" />
+          <ScalarProperty Name="carrera" ColumnName="carrera" />
+          <ScalarProperty Name="tramite" ColumnName="tramite" />
+          <ScalarProperty Name="nropas" ColumnName="nropas" />
+          <ScalarProperty Name="nacion" ColumnName="nacion" />
+          <ScalarProperty Name="argext" ColumnName="argext" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="libenr" ColumnName="libenr" />
+          <ScalarProperty Name="libciv" ColumnName="libciv" />
+          <ScalarProperty Name="cedide" ColumnName="cedide" />
+          <ScalarProperty Name="docnac" ColumnName="docnac" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="fecnac" ColumnName="fecnac" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="legdef" ColumnName="legdef" />
+          <ScalarProperty Name="legprovi" ColumnName="legprovi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_uni_get_alumno_carrera_idEntidad" FunctionName="dev_UniModel.Store.sp_uni_get_alumno_carrera_idEntidad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_UniModel.sp_uni_get_alumno_carrera_idEntidad_Result">
+          <ScalarProperty Name="Plan" ColumnName="Plan" />
+          <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+          <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+          <ScalarProperty Name="Canvas" ColumnName="Canvas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_uni_update_datos_alumno_username" FunctionName="dev_UniModel.Store.sp_uni_update_datos_alumno_username">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_UniModel.sp_uni_update_datos_alumno_username_Result">
+          <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
