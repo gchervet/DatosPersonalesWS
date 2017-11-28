@@ -16,7 +16,7 @@
     <RootNamespace>DatosPersonalesWS</RootNamespace>
     <AssemblyName>DatosPersonalesWS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -149,9 +149,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\ConfigEnum.cs" />
+    <Compile Include="Common\DTO\CarreraDto.cs" />
+    <Compile Include="Common\DTO\UniAlumnoDetalleTituloDto.cs" />
     <Compile Include="Common\DTO\UniAlumnosDatosPersonalesDto.cs" />
     <Compile Include="Common\DTO\UniCarreraDTO.cs" />
+    <Compile Include="Common\TipoTituloNivelMedioEnum.cs" />
     <Compile Include="Controllers\AlumnoController.cs" />
+    <Compile Include="Controllers\MailingController.cs" />
     <Compile Include="Data\DAL\AlumnoDAL.cs" />
     <Compile Include="Data\sp_uni_get_alumno_carrera_idEntidad_Result.cs">
       <DependentUpon>SVRSQL01Model.tt</DependentUpon>
@@ -183,11 +188,18 @@
     <Compile Include="Data\uniAlumnosDatosPersonale.cs">
       <DependentUpon>SVRSQL01Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\UniAlumnosDetalleTitulo.cs">
+      <DependentUpon>SVRSQL01Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AlumnoService.cs" />
+    <Compile Include="Service\EncryptionAlgorithmEnum.cs" />
+    <Compile Include="Service\EncryptionService.cs" />
+    <Compile Include="Service\MailingService.cs" />
+    <Compile Include="Service\SecurityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

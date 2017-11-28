@@ -106,5 +106,16 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="UniAlumnosDetalleTituloes">
+      <EntityTypeMapping TypeName="dev_UniModel.UniAlumnosDetalleTitulo">
+        <MappingFragment StoreEntitySet="UniAlumnosDetalleTitulo">
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="ComentarioTipoTituloNivelMedio" ColumnName="ComentarioTipoTituloNivelMedio" />
+          <ScalarProperty Name="Convalidado" ColumnName="Convalidado" />
+          <ScalarProperty Name="TipoTituloNivelMedio" ColumnName="TipoTituloNivelMedio" />
+          <ScalarProperty Name="IdEntidad" ColumnName="IdEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

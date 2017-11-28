@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="dev_UniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="dev_UniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="uniAlumnos">
     <Key>
       <PropertyRef Name="legprovi" />
@@ -65,6 +65,16 @@
     <Property Name="DirCodPais" Type="int" />
     <Property Name="UltimaActualizacion" Type="datetime" />
   </EntityType>
+  <EntityType Name="UniAlumnosDetalleTitulo">
+    <Key>
+      <PropertyRef Name="IdEntidad" />
+    </Key>
+    <Property Name="IdEntidad" Type="int" Nullable="false" />
+    <Property Name="TipoTituloNivelMedio" Type="int" />
+    <Property Name="Convalidado" Type="bit" />
+    <Property Name="ComentarioTipoTituloNivelMedio" Type="varchar(max)" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+  </EntityType>
   <Function Name="sp_uni_get_alumno_carrera_idEntidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idEntidad" Type="int" Mode="In" />
   </Function>
@@ -82,5 +92,6 @@
   <EntityContainer Name="dev_UniModelStoreContainer">
     <EntitySet Name="uniAlumnos" EntityType="Self.uniAlumnos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="uniAlumnosDatosPersonales" EntityType="Self.uniAlumnosDatosPersonales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UniAlumnosDetalleTitulo" EntityType="Self.UniAlumnosDetalleTitulo" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

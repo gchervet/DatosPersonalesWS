@@ -1,98 +1,127 @@
-﻿using System;
+using DatosPersonalesWS.Common.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using DatosPersonalesWS.Common.DTO;
-
 namespace DatosPersonalesWS.Data.DAL
 {
-    public class AlumnoDAL
-    {
-        /// <summary>
-        /// Obtiene los datos personales del alumno mediante su nombre de usuario
-        /// </summary>
-        /// <param name="username">Nombre de usuario del alumno</param>
-        /// <returns>Listado de los datos personales del alumno</returns>
-        internal UniAlumnosDatosPersonalesDto GetDatosPersonalesByUsername(string username)
-        {
-            using (var context = new dev_Uni_Entities())
-            {
-                // context posee todas mis entidades de modelo de base de datos
-                sp_uni_get_datos_alumno_username_Result alumnosDatosPersonales = context.sp_uni_get_datos_alumno_username(username).FirstOrDefault();
-
-                // FirstOrDefault() me devuelve el primer registro encontrado, o null en su defecto
-                if (alumnosDatosPersonales != null)
-                {
-                    List<sp_uni_get_alumno_carrera_idEntidad_Result> carrerasPorAlumnoLista = context.sp_uni_get_alumno_carrera_idEntidad(alumnosDatosPersonales.IdEntidad).ToList();
-                    return new UniAlumnosDatosPersonalesDto(alumnosDatosPersonales, carrerasPorAlumnoLista);
-                }
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Actualiza los datos personales del alumno, cargan una nueva fecha de actualización
-        /// </summary>
-        /// <param name="datosPersonalesDto">*DTO* Tipo que representa los datos personales del alumno</param>
-        /// <returns>El objeto de la base actualizado, con la nueva fecha de última modificación</returns>
-        internal UniAlumnosDatosPersonalesDto UpdateDatosPersonales(UniAlumnosDatosPersonalesDto datosPersonalesDto)
-        {
-            using (var context = new dev_Uni_Entities())
-            {
-                // Stored que actualiza los datos
-                sp_uni_update_datos_alumno_username_Result datosParaActualizar = 
-                    context.sp_uni_update_datos_alumno_username(
-                        datosPersonalesDto.IdEntidad, 
-                        datosPersonalesDto.Email, 
-                        datosPersonalesDto.TelFijoCodArea, 
-                        datosPersonalesDto.TelFijoNumero, 
-                        datosPersonalesDto.TelMovilCodArea, 
-                        datosPersonalesDto.TelMovilNumero).FirstOrDefault();
-
-                if (datosParaActualizar != null)
-                {
-                    datosPersonalesDto.UltimaModificacion = datosParaActualizar.UltimaActualizacion;
-                }
-                return datosPersonalesDto;
-            }
-        }
-
-        internal List<UniCarreraDTO> GetAlumnoCarreras(string username)
-        {
-            using (var context = new dev_Uni_Entities())
-            {
-                List<UniCarreraDTO> rtn = new List<Common.DTO.UniCarreraDTO>();
-                // context posee todas mis entidades de modelo de base de datos
-                sp_uni_get_datos_alumno_username_Result alumnosDatosPersonales = context.sp_uni_get_datos_alumno_username(username).FirstOrDefault();
-
-                // FirstOrDefault() me devuelve el primer registro encontrado, o null en su defecto
-                if (alumnosDatosPersonales != null)
-                {
-                    List<sp_uni_get_alumno_carrera_idEntidad_Result> carrerasPorAlumnoLista = context.sp_uni_get_alumno_carrera_idEntidad(alumnosDatosPersonales.IdEntidad).ToList();
-                    foreach (sp_uni_get_alumno_carrera_idEntidad_Result carrera in carrerasPorAlumnoLista)
-                    {
-                        rtn.Add(new UniCarreraDTO(carrera));
-                    }
-                    return rtn;
-                }
-                return null;
-            }
-        }
-
-        internal int GetIdEntidadByUsername(string username)
-        {
-            using (var context = new dev_Uni_Entities())
-            {
-                // context posee todas mis entidades de modelo de base de datos
-                uniAlumno uniAlumno = context.uniAlumnos.Where(x => x.username == username).FirstOrDefault();
-
-                // FirstOrDefault() me devuelve el primer registro encontrado, o null en su defecto
-                if (uniAlumno != null)
-                {
-                    return uniAlumno.IdEntidad.HasValue ? uniAlumno.IdEntidad.Value : 0;
-                }
-                return 0;
-            }
-        }
-    }
+	public class AlumnoDAL
+	{
+		internal UniAlumnosDatosPersonalesDto GetDatosPersonalesByUsername(string username)
+		{
+			UniAlumnosDatosPersonalesDto result;
+			using (dev_Uni_Entities dev_Uni_Entities = new dev_Uni_Entities())
+			{
+				sp_uni_get_datos_alumno_username_Result sp_uni_get_datos_alumno_username_Result = dev_Uni_Entities.sp_uni_get_datos_alumno_username(username).FirstOrDefault<sp_uni_get_datos_alumno_username_Result>();
+				bool flag = sp_uni_get_datos_alumno_username_Result != null;
+				if (flag)
+				{
+					List<sp_uni_get_alumno_carrera_idEntidad_Result> carrerasLista = dev_Uni_Entities.sp_uni_get_alumno_carrera_idEntidad(sp_uni_get_datos_alumno_username_Result.IdEntidad).ToList<sp_uni_get_alumno_carrera_idEntidad_Result>();
+					result = new UniAlumnosDatosPersonalesDto(sp_uni_get_datos_alumno_username_Result, carrerasLista);
+				}
+				else
+				{
+					result = null;
+				}
+			}
+			return result;
+		}
+		internal UniAlumnosDatosPersonalesDto UpdateDatosPersonales(UniAlumnosDatosPersonalesDto datosPersonalesDto)
+		{
+			using (dev_Uni_Entities dev_Uni_Entities = new dev_Uni_Entities())
+			{
+				sp_uni_update_datos_alumno_username_Result sp_uni_update_datos_alumno_username_Result = dev_Uni_Entities.sp_uni_update_datos_alumno_username(datosPersonalesDto.IdEntidad, datosPersonalesDto.Email, datosPersonalesDto.TelFijoCodArea, datosPersonalesDto.TelFijoNumero, datosPersonalesDto.TelMovilCodArea, datosPersonalesDto.TelMovilNumero).FirstOrDefault<sp_uni_update_datos_alumno_username_Result>();
+				bool flag = sp_uni_update_datos_alumno_username_Result != null;
+				if (flag)
+				{
+					datosPersonalesDto.UltimaModificacion = sp_uni_update_datos_alumno_username_Result.UltimaActualizacion;
+				}
+			}
+			return datosPersonalesDto;
+		}
+		internal List<UniCarreraDTO> GetAlumnoCarreras(string username)
+		{
+			List<UniCarreraDTO> result;
+			using (dev_Uni_Entities dev_Uni_Entities = new dev_Uni_Entities())
+			{
+				List<UniCarreraDTO> list = new List<UniCarreraDTO>();
+				sp_uni_get_datos_alumno_username_Result sp_uni_get_datos_alumno_username_Result = dev_Uni_Entities.sp_uni_get_datos_alumno_username(username).FirstOrDefault<sp_uni_get_datos_alumno_username_Result>();
+				bool flag = sp_uni_get_datos_alumno_username_Result != null;
+				if (flag)
+				{
+					List<sp_uni_get_alumno_carrera_idEntidad_Result> list2 = dev_Uni_Entities.sp_uni_get_alumno_carrera_idEntidad(sp_uni_get_datos_alumno_username_Result.IdEntidad).ToList<sp_uni_get_alumno_carrera_idEntidad_Result>();
+					foreach (sp_uni_get_alumno_carrera_idEntidad_Result current in list2)
+					{
+						list.Add(new UniCarreraDTO(current));
+					}
+					result = list;
+				}
+				else
+				{
+					result = null;
+				}
+			}
+			return result;
+		}
+		internal void InsertDetalleTitulo(UniAlumnoDetalleTituloDto alumnoDetalleTituloDto)
+		{
+			using (dev_Uni_Entities dev_Uni_Entities = new dev_Uni_Entities())
+			{
+				bool flag = alumnoDetalleTituloDto != null;
+				if (flag)
+				{
+					UniAlumnosDetalleTitulo uniAlumnosDetalleTitulo = new UniAlumnosDetalleTitulo();
+					uniAlumnosDetalleTitulo.IdEntidad = alumnoDetalleTituloDto.IdEntidad;
+					uniAlumnosDetalleTitulo.TipoTituloNivelMedio = new int?(int.Parse(alumnoDetalleTituloDto.TipoTituloNivelMedio));
+					uniAlumnosDetalleTitulo.FechaActualizacion = new DateTime?(alumnoDetalleTituloDto.FechaActualizacion);
+					uniAlumnosDetalleTitulo.Convalidado = alumnoDetalleTituloDto.Convalidado;
+					uniAlumnosDetalleTitulo.ComentarioTipoTituloNivelMedio = alumnoDetalleTituloDto.ComentarioTipoTituloNivelMedio;
+					dev_Uni_Entities.UniAlumnosDetalleTituloes.Add(uniAlumnosDetalleTitulo);
+					try
+					{
+						dev_Uni_Entities.SaveChanges();
+					}
+					catch (Exception ex)
+					{
+                        throw ex;
+					}
+				}
+			}
+		}
+		internal bool ValidarDetalleDeTituloActualizado(string username)
+		{
+			bool result;
+			using (dev_Uni_Entities dev_Uni_Entities = new dev_Uni_Entities())
+			{
+				sp_uni_get_datos_alumno_username_Result alumnosDatosPersonales = dev_Uni_Entities.sp_uni_get_datos_alumno_username(username).FirstOrDefault<sp_uni_get_datos_alumno_username_Result>();
+				bool flag = alumnosDatosPersonales != null;
+				if (flag)
+				{
+					result = dev_Uni_Entities.UniAlumnosDetalleTituloes.Any((UniAlumnosDetalleTitulo x) => (int?)x.IdEntidad == alumnosDatosPersonales.IdEntidad);
+				}
+				else
+				{
+					result = true;
+				}
+			}
+			return result;
+		}
+		internal int GetIdEntidadByUsername(string username)
+		{
+			int result;
+			using (dev_Uni_Entities dev_Uni_Entities = new dev_Uni_Entities())
+			{
+				sp_uni_get_datos_alumno_username_Result sp_uni_get_datos_alumno_username_Result = dev_Uni_Entities.sp_uni_get_datos_alumno_username(username).FirstOrDefault<sp_uni_get_datos_alumno_username_Result>();
+				bool flag = sp_uni_get_datos_alumno_username_Result != null;
+				if (flag)
+				{
+					result = (sp_uni_get_datos_alumno_username_Result.IdEntidad.HasValue ? sp_uni_get_datos_alumno_username_Result.IdEntidad.Value : 0);
+				}
+				else
+				{
+					result = 0;
+				}
+			}
+			return result;
+		}
+	}
 }

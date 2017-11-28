@@ -17,6 +17,7 @@
       <Parameter Name="telMovilArea" Mode="In" Type="String" />
       <Parameter Name="telMovilNumero" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="UniAlumnosDetalleTituloes" EntityType="dev_UniModel.UniAlumnosDetalleTitulo" />
   </EntityContainer>
   <EntityType Name="uniAlumnosDatosPersonale">
     <Key>
@@ -109,4 +110,14 @@
   <ComplexType Name="sp_uni_update_datos_alumno_username_Result">
     <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
   </ComplexType>
+  <EntityType Name="UniAlumnosDetalleTitulo">
+    <Key>
+      <PropertyRef Name="IdEntidad" />
+    </Key>
+    <Property Name="IdEntidad" Type="Int32" Nullable="false" />
+    <Property Name="TipoTituloNivelMedio" Type="Int32" />
+    <Property Name="Convalidado" Type="Boolean" />
+    <Property Name="ComentarioTipoTituloNivelMedio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>
