@@ -49,7 +49,7 @@ namespace DatosPersonalesWS.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_uni_get_alumno_carrera_idEntidad_Result>("sp_uni_get_alumno_carrera_idEntidad", idEntidadParameter);
         }
     
-        public virtual ObjectResult<sp_uni_update_datos_alumno_username_Result> sp_uni_update_datos_alumno_username(Nullable<int> idEntidad, string mail, string telFijoArea, string telFijoNumero, string telMovilArea, string telMovilNumero)
+        public virtual ObjectResult<sp_uni_update_datos_alumno_username_Result> sp_uni_update_datos_alumno_username(Nullable<int> idEntidad, string mail, string telFijoArea, string telFijoNumero, string telMovilArea, string telMovilNumero, string telFijoCodPais, string telMovilCodPais)
         {
             var idEntidadParameter = idEntidad.HasValue ?
                 new ObjectParameter("idEntidad", idEntidad) :
@@ -75,7 +75,15 @@ namespace DatosPersonalesWS.Data
                 new ObjectParameter("telMovilNumero", telMovilNumero) :
                 new ObjectParameter("telMovilNumero", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_uni_update_datos_alumno_username_Result>("sp_uni_update_datos_alumno_username", idEntidadParameter, mailParameter, telFijoAreaParameter, telFijoNumeroParameter, telMovilAreaParameter, telMovilNumeroParameter);
+            var telFijoCodPaisParameter = telFijoCodPais != null ?
+                new ObjectParameter("telFijoCodPais", telFijoCodPais) :
+                new ObjectParameter("telFijoCodPais", typeof(string));
+    
+            var telMovilCodPaisParameter = telMovilCodPais != null ?
+                new ObjectParameter("telMovilCodPais", telMovilCodPais) :
+                new ObjectParameter("telMovilCodPais", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_uni_update_datos_alumno_username_Result>("sp_uni_update_datos_alumno_username", idEntidadParameter, mailParameter, telFijoAreaParameter, telFijoNumeroParameter, telMovilAreaParameter, telMovilNumeroParameter, telFijoCodPaisParameter, telMovilCodPaisParameter);
         }
     }
 }

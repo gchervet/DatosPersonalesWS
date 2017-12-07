@@ -16,6 +16,8 @@
       <Parameter Name="telFijoNumero" Mode="In" Type="String" />
       <Parameter Name="telMovilArea" Mode="In" Type="String" />
       <Parameter Name="telMovilNumero" Mode="In" Type="String" />
+      <Parameter Name="telFijoCodPais" Mode="In" Type="String" />
+      <Parameter Name="telMovilCodPais" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="UniAlumnosDetalleTituloes" EntityType="dev_UniModel.UniAlumnosDetalleTitulo" />
   </EntityContainer>

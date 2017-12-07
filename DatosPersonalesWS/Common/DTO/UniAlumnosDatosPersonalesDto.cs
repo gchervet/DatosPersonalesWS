@@ -112,8 +112,10 @@ namespace DatosPersonalesWS.Common.DTO
 			this.NumeroDocumento = alumnosDatosPersonales.NumeroDocumento;
 			this.TelFijoCodArea = alumnosDatosPersonales.TelFijoCodArea;
 			this.TelFijoNumero = alumnosDatosPersonales.TelFijoNumero;
+            this.TelFijoCodPais = alumnosDatosPersonales.TelFijoCodPais;
 			this.TelMovilCodArea = alumnosDatosPersonales.TelMovilCodArea;
 			this.TelMovilNumero = alumnosDatosPersonales.TelMovilNumero;
+            this.TelMovilCodPais = alumnosDatosPersonales.TelMovilCodPais;
 			this.UltimaModificacion = alumnosDatosPersonales.UltimaActualizacion;
 			this.CarreraLista = new List<UniCarreraDTO>();
 			foreach (sp_uni_get_alumno_carrera_idEntidad_Result current in carrerasLista)

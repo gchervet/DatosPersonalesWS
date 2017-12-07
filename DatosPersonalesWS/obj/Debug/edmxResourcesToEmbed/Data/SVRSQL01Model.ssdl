@@ -88,6 +88,8 @@
     <Parameter Name="telFijoNumero" Type="varchar" Mode="In" />
     <Parameter Name="telMovilArea" Type="varchar" Mode="In" />
     <Parameter Name="telMovilNumero" Type="varchar" Mode="In" />
+    <Parameter Name="telFijoCodPais" Type="varchar" Mode="In" />
+    <Parameter Name="telMovilCodPais" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="dev_UniModelStoreContainer">
     <EntitySet Name="uniAlumnos" EntityType="Self.uniAlumnos" Schema="dbo" store:Type="Tables" />

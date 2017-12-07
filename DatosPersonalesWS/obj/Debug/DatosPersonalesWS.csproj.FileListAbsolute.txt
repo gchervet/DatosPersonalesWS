@@ -266,9 +266,6 @@ C:\Users\gchervet\Desktop\DatosPersonalesWS\DatosPersonalesWS\bin\System.Web.Htt
 C:\Users\gchervet\Desktop\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.csprojResolveAssemblyReference.cache
 C:\Users\gchervet\Desktop\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.dll
 C:\Users\gchervet\Desktop\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.pdb
-C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.csprojResolveAssemblyReference.cache
-C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.dll
-C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.pdb
 C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\ApplicationInsights.config
 C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\roslyn\csc.exe
 C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -314,3 +311,6 @@ C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\Newtonsof
 C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\System.Net.Http.Formatting.xml
 C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\System.Web.Http.xml
 C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\bin\System.Web.Http.WebHost.xml
+C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.csprojResolveAssemblyReference.cache
+C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.dll
+C:\Users\gchervet\Source\Repos\DatosPersonalesWS\DatosPersonalesWS\obj\Debug\DatosPersonalesWS.pdb

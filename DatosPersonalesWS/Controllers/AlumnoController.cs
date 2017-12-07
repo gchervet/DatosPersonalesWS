@@ -12,18 +12,20 @@ namespace DatosPersonalesWS.Controllers
 	{
 		private AlumnoService alumnoService = new AlumnoService();
 		private SecurityService securityService = new SecurityService();
+
 		[HttpGet, Route("ValidarInformacionActualizada")]
 		public bool ValidarInformacionActualizada(string username, int cantMeses = 6)
 		{
 			return this.alumnoService.ValidarInformacionActualizada(username, cantMeses);
 		}
-		[HttpGet, Route("GetDatosPersonalesByUsername")]
-		public UniAlumnosDatosPersonalesDto GetDatosPersonalesByUsername()
+
+        [AllowAnonymous, HttpGet, Route("GetDatosPersonalesByUsername")]
+		public UniAlumnosDatosPersonalesDto GetDatosPersonalesByUsername(string username)
 		{
 			UniAlumnosDatosPersonalesDto result;
 			try
 			{
-				string text = this.securityService.DesencriptarUsername(HttpContext.Current.Request.Headers["Authorization"]);
+                string text = this.securityService.DesencriptarUsername(username);
 				bool flag = !string.IsNullOrEmpty(text);
 				if (flag)
 				{
@@ -39,11 +41,11 @@ namespace DatosPersonalesWS.Controllers
 			result = null;
 			return result;
 		}
-		[HttpPost, Route("UpdateDatosPersonales")]
-		public UniAlumnosDatosPersonalesDto UpdateDatosPersonales([FromBody] UniAlumnosDatosPersonalesDto alumnosDatosPersonalesDto)
-		{
-			return this.alumnoService.UpdateDatosPersonales(alumnosDatosPersonalesDto);
-		}
+        [AllowAnonymous, HttpPost, Route("UpdateDatosPersonales")]
+        public UniAlumnosDatosPersonalesDto UpdateDatosPersonales([FromBody] UniAlumnosDatosPersonalesDto alumnosDatosPersonalesDto)
+        {
+            return this.alumnoService.UpdateDatosPersonales(alumnosDatosPersonalesDto);
+        }
 		[AllowAnonymous, HttpGet, Route("GetAlumnoCarreras")]
 		public List<UniCarreraDTO> GetAlumnoCarreras(string username)
 		{
