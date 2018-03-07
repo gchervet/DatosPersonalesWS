@@ -55,5 +55,15 @@ namespace DatosPersonalesWS.Service
 		{
 			return this.alumnoDAL.GetIdEntidadByUsername(username);
 		}
-	}
+
+        internal bool ValidarAlumnoNotificado(string username)
+        {
+            return this.alumnoDAL.ValidarAlumnoNotificado(username);
+        }
+
+        internal void UpdateAlumnoNotificado(string username)
+        {
+            this.alumnoDAL.UpdateAlumnoNotificado(username);
+        }
+    }
 }

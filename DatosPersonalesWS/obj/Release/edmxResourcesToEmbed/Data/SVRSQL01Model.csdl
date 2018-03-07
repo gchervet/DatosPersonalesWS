@@ -5,7 +5,6 @@
     <FunctionImport Name="sp_uni_get_datos_alumno_username" ReturnType="Collection(dev_UniModel.sp_uni_get_datos_alumno_username_Result)">
       <Parameter Name="username" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="uniAlumnos" EntityType="dev_UniModel.uniAlumno" />
     <FunctionImport Name="sp_uni_get_alumno_carrera_idEntidad" ReturnType="Collection(dev_UniModel.sp_uni_get_alumno_carrera_idEntidad_Result)">
       <Parameter Name="idEntidad" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -20,6 +19,7 @@
       <Parameter Name="telMovilCodPais" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="UniAlumnosDetalleTituloes" EntityType="dev_UniModel.UniAlumnosDetalleTitulo" />
+    <EntitySet Name="uniAlumnos" EntityType="dev_UniModel.uniAlumno" />
   </EntityContainer>
   <EntityType Name="uniAlumnosDatosPersonale">
     <Key>
@@ -47,6 +47,44 @@
     <Property Name="DirCodPais" Type="Int32" />
     <Property Name="UltimaActualizacion" Type="DateTime" Precision="3" />
   </EntityType>
+  <ComplexType Name="sp_uni_get_datos_alumno_username_Result">
+    <Property Type="Int32" Name="legprovi" Nullable="false" />
+    <Property Type="Int32" Name="legdef" Nullable="true" />
+    <Property Type="String" Name="apellido" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="fecnac" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IdEntidad" Nullable="true" />
+    <Property Type="String" Name="TelFijoCodArea" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelFijoCodPais" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelFijoNumero" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="TelMovilCodArea" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelMovilCodPais" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="TelMovilNumero" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="EMail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NumeroDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_uni_update_datos_alumno_username_Result">
+    <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="UniAlumnosDetalleTitulo">
+    <Key>
+      <PropertyRef Name="IdEntidad" />
+    </Key>
+    <Property Name="IdEntidad" Type="Int32" Nullable="false" />
+    <Property Name="TipoTituloNivelMedio" Type="Int32" />
+    <Property Name="Convalidado" Type="Boolean" />
+    <Property Name="ComentarioTipoTituloNivelMedio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_uni_get_alumno_carrera_idEntidad_Result">
+    <Property Type="String" Name="Plan" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="Modalidad" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Carrera" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Nivel" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Canvas" Nullable="true" />
+    <Property Type="Boolean" Name="Notificado" Nullable="false" />
+  </ComplexType>
   <EntityType Name="uniAlumno">
     <Key>
       <PropertyRef Name="legprovi" />
@@ -85,41 +123,6 @@
     <Property Name="CanalDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
-  </EntityType>
-  <ComplexType Name="sp_uni_get_datos_alumno_username_Result">
-    <Property Type="Int32" Name="legprovi" Nullable="false" />
-    <Property Type="Int32" Name="legdef" Nullable="true" />
-    <Property Type="String" Name="apellido" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="nombre" Nullable="true" MaxLength="30" />
-    <Property Type="DateTime" Name="fecnac" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="IdEntidad" Nullable="true" />
-    <Property Type="String" Name="TelFijoCodArea" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="TelFijoCodPais" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="TelFijoNumero" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="TelMovilCodArea" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="TelMovilCodPais" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="TelMovilNumero" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="EMail" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NumeroDocumento" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="sp_uni_get_alumno_carrera_idEntidad_Result">
-    <Property Type="String" Name="Plan" Nullable="true" MaxLength="4" />
-    <Property Type="String" Name="Modalidad" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="Carrera" Nullable="true" MaxLength="2" />
-    <Property Type="Boolean" Name="Canvas" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_uni_update_datos_alumno_username_Result">
-    <Property Type="DateTime" Name="UltimaActualizacion" Nullable="true" Precision="23" />
-  </ComplexType>
-  <EntityType Name="UniAlumnosDetalleTitulo">
-    <Key>
-      <PropertyRef Name="IdEntidad" />
-    </Key>
-    <Property Name="IdEntidad" Type="Int32" Nullable="false" />
-    <Property Name="TipoTituloNivelMedio" Type="Int32" />
-    <Property Name="Convalidado" Type="Boolean" />
-    <Property Name="ComentarioTipoTituloNivelMedio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="Notificado" Type="Boolean" />
   </EntityType>
 </Schema>

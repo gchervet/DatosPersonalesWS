@@ -48,5 +48,6 @@ namespace DatosPersonalesWS.Data
         public string CanalDescripcion { get; set; }
         public string Usuario { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public Nullable<bool> Notificado { get; set; }
     }
 }

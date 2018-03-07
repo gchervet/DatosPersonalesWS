@@ -38,6 +38,7 @@
     <Property Name="CanalDescripcion" Type="varchar" MaxLength="100" />
     <Property Name="Usuario" Type="varchar" MaxLength="50" />
     <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="Notificado" Type="bit" />
   </EntityType>
   <EntityType Name="uniAlumnosDatosPersonales">
     <Key>

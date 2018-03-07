@@ -103,5 +103,18 @@ namespace DatosPersonalesWS.Controllers
 		{
 			return this.alumnoService.GetIdEntidadByUsername(username);
 		}
+
+
+        [HttpGet, Route("ValidarAlumnoNotificado")]
+        public bool ValidarAlumnoNotificado(string username)
+        {
+            return this.alumnoService.ValidarAlumnoNotificado(username);
+        }
+
+        [HttpPost, Route("UpdateAlumnoNotificado")]
+        public void UpdateAlumnoNotificado(string username)
+        {
+            this.alumnoService.UpdateAlumnoNotificado(username);
+        }
 	}
 }

@@ -28,8 +28,8 @@ namespace DatosPersonalesWS.Data
         }
     
         public virtual DbSet<uniAlumnosDatosPersonale> uniAlumnosDatosPersonales { get; set; }
-        public virtual DbSet<uniAlumno> uniAlumnos { get; set; }
         public virtual DbSet<UniAlumnosDetalleTitulo> UniAlumnosDetalleTituloes { get; set; }
+        public virtual DbSet<uniAlumno> uniAlumnos { get; set; }
     
         public virtual ObjectResult<sp_uni_get_datos_alumno_username_Result> sp_uni_get_datos_alumno_username(string username)
         {

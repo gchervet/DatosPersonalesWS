@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b4abeaf456dc42d086e073790385a188" Name="Diagram1" ZoomLevel="64" >
         <EntityTypeShape EntityType="dev_UniModel.uniAlumnosDatosPersonale" Width="3.125" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="dev_UniModel.uniAlumno" Width="1.5" PointX="4.375" PointY="0.75" />
         <EntityTypeShape EntityType="dev_UniModel.UniAlumnosDetalleTitulo" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="dev_UniModel.uniAlumno" Width="1.5" PointX="4.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

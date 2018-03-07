@@ -16,6 +16,8 @@ namespace DatosPersonalesWS.Data
         public string Plan { get; set; }
         public string Modalidad { get; set; }
         public string Carrera { get; set; }
+        public string Nivel { get; set; }
         public Nullable<bool> Canvas { get; set; }
+        public bool Notificado { get; set; }
     }
 }
