@@ -25,7 +25,7 @@ namespace DatosPersonalesWS.Controllers
 			UniAlumnosDatosPersonalesDto result;
 			try
 			{
-                username = username.Replace(' ', '+');
+                username = username.Replace(' ', '+'); 
                 string text = this.securityService.DesencriptarUsername(username);
 				bool flag = !string.IsNullOrEmpty(text);
 				if (flag)
